@@ -90,12 +90,12 @@
 \bvec v \times \bvec w = -( \bvec w \times \bvec v), \quad \| \bvec v \times \bvec w\| = \|\bvec v\|\|\bvec w\| \sin\theta\\
 \end{gather*}
 
-\vspace{-15pt}
+\vspace{-10pt}
 
 \section{Kinematics}
 \begin{multicols}{2}
     
-    \paragraph{Velocity and Linear Acceleration}
+    \begin{center}\textbf{Velocity and Linear Acceleration}\end{center}
     \begin{gather*}
     \bvec{v}_\mathrm{avg} = \frac{\Delta \bvec{x}}{\Delta t}, \qquad \bvec{v} = \diffop[\bvec x]{t}\\
     \bvec{x}_f - \bvec{x}_i = \Delta \bvec{x} = \int_{t_i}^{t_f} \bvec{v}(t)\,\mathrm dt
@@ -105,19 +105,19 @@
     
     \columnbreak
     
-    \paragraph{Under constant acceleration}
+    \begin{center}\textbf{Under constant acceleration}\end{center}
     \begin{align*}
     v_f &= v_i + at\\
     \Delta x &= v_i t + \frac{1}{2} at^2\\
     v_f^2 &= v_i^2 + 2ax\\
     \end{align*}
 \end{multicols}
-
+\vspace{-5pt}
 \subsection{Uniform Circular Motion}
 \begin{gather*}
     a_\mathrm{rad} = \frac{v^2}{R} = \frac{4\pi^2 R}{T^2},\qquad v_\mathrm{rad} = \frac{2\pi R}{T}
 \end{gather*}
-
+\vspace{-18pt}
 \section{Forces}
 \begin{align*}
 \sum \bvec{F} &= \bvec{0} \tag{Newton's first law at equilibrium}\\
@@ -133,11 +133,13 @@ W &= \bvec{F} \cdot \bvec {s} \tag{Constant force in a line}\\
 W &= \Delta K \tag{Work-energy theorem} \\
 W &= \int_C \bvec{F}(\bvec{x})\cdot\mathrm{d}\bvec{x} \tag{Varying force on currved path}
 \end{align*}
+\vspace{-10pt}
 \paragraph{Power}
 \begin{align*}
 P_\mathrm{avg} = \frac{\Delta W}{\Delta t},& \quad P = \diffop[W]{t} \tag{Avg. and Instanteous Power}\\
 P &= \bvec{F} \cdot \bvec{v} \tag{Instantaneous Power}
 \end{align*}
+\vspace{-20pt}
 \section{Energy}
 \begin{align*}
 U_\mathrm{grav} &= mgh \tag{Gravational potential energy}\\
@@ -199,8 +201,9 @@ F_x &= -\diffop[U]{x} \tag{Force from potential enegery}\\
 
 \section{Angular Kinematics}
 \begin{multicols}{2}
-    
-    \paragraph{Angular Velocity and Acceleration}
+    \begin{center}
+    \textbf{Angular Velocity and Acceleration}
+    \end{center}
     \begin{gather*}
     \omega_\mathrm{avg} = \frac{\Delta \theta}{\Delta t}, \qquad \omega = \diffop[ \theta]{t}\\
     \theta_f - \theta_i = \Delta \theta = \int_{t_i}^{t_f} \omega(t)\,\mathrm dt
@@ -208,15 +211,16 @@ F_x &= -\diffop[U]{x} \tag{Force from potential enegery}\\
     \alpha_\mathrm{avg} = \frac{\Delta \omega}{\Delta t},  \qquad 
     \alpha = \diffop[\omega]{t} = \diffop[^2 \theta]{t^2}
     \end{gather*}
-    
     \columnbreak
-    
-    \paragraph{Under constant acceleration}
+    \begin{center}
+        \textbf{Under constant acceleration}
+    \end{center}
     \begin{align*}
     \omega_f &= \omega_i + \alpha t\\
     \Delta \theta &= \omega_i t + \frac{1}{2} \alpha t^2\\
-    \omega_f^2 &= \omega_i^2 + 2\alpha x\\
+    \omega_f^2 &= \omega_i^2 + 2\alpha x
     \end{align*}
+    \vfill\null
 \end{multicols}
 \begin{align*}
 v_\mathrm{tan} &= \diffop[s]{t} = r \diffop[\theta]{t} = r\omega \tag{Tangential and angular velocity}\\
@@ -320,7 +324,7 @@ E &= \frac{1}{2}mv_x^2 +\frac{1}{2}kx^2 = \frac{1}{2} kA^2 = \text{const.} \tag{
 
 \section{Units}
 %\fbox{\parbox{\columnwidth}{
-        \begin{align*}
+        \begin{align*}c
         \si{\newton} &= \si{\kg\meter\per\second\squared} \tag{Newtons}\\
         \si{\joule} &= \si{\kg\meter\squared\per\second\squared} \tag{Joules}\\
         \si{\watt} &= \si{\kg\meter\squared\per\second\cubed} \tag{Watts}\\
