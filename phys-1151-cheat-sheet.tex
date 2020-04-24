@@ -1,0 +1,338 @@
+\documentclass[10pt,landscape,letterpaper]{article} % Copyright (c) 2020 Brian Schubert
+\usepackage{multicol}
+\usepackage[landscape]{geometry}
+\usepackage{amsmath,amsfonts,amssymb}
+\usepackage{mathtools}
+\usepackage{fancyhdr}
+\usepackage{enumitem}
+\usepackage{tabularx}
+\usepackage{titlesec}
+\usepackage{array}
+
+% Units for second page
+\usepackage{siunitx}
+\DeclareSIUnit{\atm}{atm}
+
+%
+% Styling inspired by tex.stackexchange user "Dror" in this posting:
+% https://tex.stackexchange.com/questions/8827/preparing-cheat-sheets
+%
+
+\thispagestyle{fancy}
+\cfoot{\footnotesize Copyright \textcopyright \ 2020 Brian Schubert}
+\rfoot{\footnotesize Revised 2020-04-24}
+\lhead{PHYS 1151\\Physics for Engineering 1}
+\rhead{Spring 2020 \\ Prof. Matthew Webber}
+%\chead{\large \underline{Midterm Exam ``Cheat Sheet"}}
+\renewcommand{\headrulewidth}{0pt}
+\setlength{\voffset}{-4pt}
+
+\geometry{top=0.7in,left=.4in,right=.4in,bottom=.6in}
+
+
+% Redefine section commands to use less space
+% NOTE - still to be tweak to maximize space with reasonable readbability
+\makeatletter
+\renewcommand{\section}{\@startsection{section}{1}{0mm}%
+                                {-1ex plus -.5ex minus -.2ex}%
+                                {0.5ex plus .2ex}%x
+                                {\normalfont\large\bfseries}}
+\renewcommand{\subsection}{\@startsection{subsection}{2}{0mm}%
+                                {-1explus -.5ex minus -.2ex}%
+                                {0.5ex plus .2ex}%
+                                {\normalfont\normalsize\bfseries}}
+% Custom squishing for \paragraph
+\renewcommand\paragraph{\@startsection{paragraph}{4}{\z@}%
+    {0.5ex \@plus1ex \@minus.2ex}%
+    {-1em}%
+    {\normalfont\small\bfseries}}
+
+% Don't print section numbers
+\setcounter{secnumdepth}{0}
+
+
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt plus 0.5ex}
+
+% Notation Definitions
+\newcommand{\dd}[1]{\mathrm{d}#1}
+\newcommand{\diffop}[2][]{\frac{\dd#1}{\dd #2}}
+\newcommand{\pdiffop}[2][]{\frac{\partial #1}{\partial #2}}
+\newcommand{\matr}[1]{\mathbf{#1}}
+\newcommand{\bvec}[1]{{\vec{\mathbf{#1}}}}
+\newcommand{\vecspace}[1]{\mathbb{#1}}
+\newcommand{\transp}{^\mathrm{T}}
+
+\newcommand\cheatsheetmargin{0.2cm}
+
+% -----------------------------------------------------------------------
+
+\begin{document}
+\raggedright
+\footnotesize
+\begin{multicols*}{3}
+
+
+% multicol parameters
+% These lengths are set only within the two main columns
+%\setlength{\columnseprule}{0.25pt}
+\setlength{\premulticols}{1pt}
+\setlength{\postmulticols}{1pt}
+\setlength{\multicolsep}{1pt}
+\setlength{\columnsep}{2pt}
+
+
+\section{Vector Products}
+
+\begin{gather*}
+\bvec v \cdot \bvec w = \|\bvec v\|\|\bvec w\| \cos\theta = \|\bvec v\| \|\operatorname{proj}_\bvec{v} \bvec w\|  = \|\bvec w\| \|\operatorname{proj}_\bvec{w} \bvec v \| \\
+\bvec v \times \bvec w = -( \bvec w \times \bvec v), \quad \| \bvec v \times \bvec w\| = \|\bvec v\|\|\bvec w\| \sin\theta\\
+\end{gather*}
+
+\vspace{-15pt}
+
+\section{Kinematics}
+\begin{multicols}{2}
+    
+    \paragraph{Velocity and Linear Acceleration}
+    \begin{gather*}
+    \bvec{v}_\mathrm{avg} = \frac{\Delta \bvec{x}}{\Delta t}, \qquad \bvec{v} = \diffop[\bvec x]{t}\\
+    \bvec{x}_f - \bvec{x}_i = \Delta \bvec{x} = \int_{t_i}^{t_f} \bvec{v}(t)\,\mathrm dt
+    \\
+    \bvec{a}_\mathrm{avg} = \frac{\Delta \bvec{v}}{\Delta t},  \qquad \bvec{a} = \diffop[\bvec v]{t} = \diffop[^2\bvec x]{t^2}
+    \end{gather*}
+    
+    \columnbreak
+    
+    \paragraph{Under constant acceleration}
+    \begin{align*}
+    v_f &= v_i + at\\
+    \Delta x &= v_i t + \frac{1}{2} at^2\\
+    v_f^2 &= v_i^2 + 2ax\\
+    \end{align*}
+\end{multicols}
+
+\subsection{Uniform Circular Motion}
+\begin{gather*}
+    a_\mathrm{rad} = \frac{v^2}{R} = \frac{4\pi^2 R}{T^2},\qquad v_\mathrm{rad} = \frac{2\pi R}{T}
+\end{gather*}
+
+\section{Forces}
+\begin{align*}
+\sum \bvec{F} &= \bvec{0} \tag{Newton's first law at equilibrium}\\
+\sum \bvec{F} &= m\bvec{a} \tag{Newton's second law}\\
+\bvec{F}_{A/B} &= -\bvec{F}_{B/A} \tag{Newton's third law}
+\end{align*}
+\begin{equation*}
+F_\mu = \mu_{k} F_N, \qquad F_\mu \leq \mu_s N \tag{Kinetic vs Static friction}
+\end{equation*}
+\section{Work}
+\begin{align*}
+W &= \bvec{F} \cdot \bvec {s} \tag{Constant force in a line}\\
+W &= \Delta K \tag{Work-energy theorem} \\
+W &= \int_C \bvec{F}(\bvec{x})\cdot\mathrm{d}\bvec{x} \tag{Varying force on currved path}
+\end{align*}
+\paragraph{Power}
+\begin{align*}
+P_\mathrm{avg} = \frac{\Delta W}{\Delta t},& \quad P = \diffop[W]{t} \tag{Avg. and Instanteous Power}\\
+P &= \bvec{F} \cdot \bvec{v} \tag{Instantaneous Power}
+\end{align*}
+\section{Energy}
+\begin{align*}
+U_\mathrm{grav} &= mgh \tag{Gravational potential energy}\\
+K &= \frac{1}{2}mv^2 \tag{Linear kinetic energy}\\
+U_\mathrm{el} &= \frac{1}{2}kx^2 \tag{Eleastic potential energy}\\ 
+\Delta U &= -\int_{x_i}^{x_f} \bvec{F}\cdot \mathrm{d}\bvec{x} \tag{Potential Energy from foce field}\\
+F_x &= -\diffop[U]{x} \tag{Force from potential enegery}\\ 
+\bvec{F} &= - \nabla U = -\left\langle \pdiffop[U]{x},\pdiffop[U]{y}, \pdiffop[U]{z} \right\rangle \tag{Force from potential energy}\\
+\end{align*}
+
+\columnbreak
+
+\section{Momentum}
+\begin{align*}
+\bvec{p} &= m\bvec{v} \tag{Momenutm} \\
+\sum \bvec{F} &= \diffop[\bvec{p}]{t} = m\diffop[\bvec{v}]{t} \tag{Newton's seond law}\\
+\bvec{P} &= \sum m_i\bvec{v}_i = M\bvec{v}_\mathrm{cm} \tag{Total momentum of system}\\
+\end{align*}
+
+\vspace{-15pt}
+
+\subsection{Impulse}
+.\begin{align*}
+\bvec{J} &= \bvec{p}_2 - \bvec{p}_1  = \Delta \bvec{p} \tag{Impulse} \\
+\bvec{J} &= \sum\bvec{F}\Delta t = \bvec{F}_\mathrm{avg} \Delta t \tag{Impulse from constant external force} \\
+\bvec{J} &= \int_{t_i}^{t_f} \bvec{F}(t) \,\mathrm{d}t \tag{Impulse from general external force}\\
+\end{align*}
+
+\vspace{-10pt}
+
+\subsection{Collisions}
+\begin{multicols}{2}
+    \begin{center}
+        \underline{Elastic Collisions}
+    \end{center}
+    \begin{itemize}[leftmargin=14pt]
+        \item Kinetic energy and momentum conserved
+        \item Bodies do not permanently deform
+    \end{itemize}
+
+    \columnbreak
+    
+   \begin{center}
+        \underline{Inelastic Collisions}
+    \end{center}
+    \begin{itemize}[leftmargin=14pt]
+        \item Momentum conserved
+        \item Energy dissipated through sound, heat, deformation
+        \item Perfectly inelastic - bodies remain in contact after collision ($\sum \bvec{p}_i = \bvec{0}$)
+    \end{itemize}
+\end{multicols}
+
+\paragraph{Center of Mass}
+\begin{align*}
+\bvec{r}_\mathrm{cm} =\frac{\sum_i m_i \bvec{r}_i}{\sum_i {m_i}} \tag{Center of mass}\\
+\sum{\bvec{F}_\mathrm{ext}} = M \bvec{a}_\mathrm{cm} \tag{Net external force}\\
+\end{align*}
+
+
+\section{Angular Kinematics}
+\begin{multicols}{2}
+    
+    \paragraph{Angular Velocity and Acceleration}
+    \begin{gather*}
+    \omega_\mathrm{avg} = \frac{\Delta \theta}{\Delta t}, \qquad \omega = \diffop[ \theta]{t}\\
+    \theta_f - \theta_i = \Delta \theta = \int_{t_i}^{t_f} \omega(t)\,\mathrm dt
+    \\
+    \alpha_\mathrm{avg} = \frac{\Delta \omega}{\Delta t},  \qquad 
+    \alpha = \diffop[\omega]{t} = \diffop[^2 \theta]{t^2}
+    \end{gather*}
+    
+    \columnbreak
+    
+    \paragraph{Under constant acceleration}
+    \begin{align*}
+    \omega_f &= \omega_i + \alpha t\\
+    \Delta \theta &= \omega_i t + \frac{1}{2} \alpha t^2\\
+    \omega_f^2 &= \omega_i^2 + 2\alpha x\\
+    \end{align*}
+\end{multicols}
+\begin{align*}
+v_\mathrm{tan} &= \diffop[s]{t} = r \diffop[\theta]{t} = r\omega \tag{Tangential and angular velocity}\\
+a_\mathrm{tan} &= r\alpha \tag{Tangential and angular acceleration} \\
+a_\mathrm{rad} &= \frac{v^2_\mathrm{tan}}{r} = \omega^2 r \tag{Radial and angular acceleration} \\
+K_\mathrm{rot} &= \frac{1}{2} I\omega^2 \tag{Rotational kinetic energy}
+\end{align*}
+
+\columnbreak
+
+
+\section{Moment of Inertia}
+
+\begin{align*}
+I_\mathrm{pm} &= mr^2 \tag{Moment of intertia of point mass}\\
+I &= \int r^2 \,\mathrm{d}m \tag{Moment of intertia of continous mass}\\
+I &= \sum m_i r_i^2 \tag{Moment of intertia of collection of particles}\\
+I &= I_\mathrm{cm} + Md^2 \tag{Parallel axis theorem}
+\end{align*}
+
+
+\section{Torque and Angular Momentum}
+\begin{align*}
+\bvec{\tau} &= \bvec{r} \times \bvec{F}  \tag{Torque vector}\\
+\tau &= r_\perp F = rF_\perp \tag{Magnitude of torque}\\
+\sum \bvec{\tau} &= I \bvec{\alpha} \tag{Newton's second law}\\
+\bvec{L} &= \bvec{r} \times \bvec{p} = \bvec{r}\times m\bvec{v} \tag{Angular momentum of particle}\\
+\bvec{L} &= I \bvec{\omega} \tag{Angular momentum of rigid axis} \\
+\bvec{\tau} &= \diffop[\bvec{L}]{t} \tag{Torque and angular momentum}\\
+\end{align*}
+
+\vspace{-12pt}
+
+\paragraph{Energy and Rotation}
+\begin{align*}
+K &= \frac{1}{2}Mv^2_\mathrm{cm} + \frac{1}{2}I_\mathrm{cm}\omega^2 \tag{Kinetic energy of rigid body} \\
+W &= \int_{\theta_i}^{\theta_f} \tau_z \,\mathrm{d}\theta \tag{Work done by $\tau_z$}\\
+W &= \tau_z \Delta \theta \tag{Work done by constant $\tau_z$}\\
+P &= \tau_z \omega_z \tag{Power due to torque}
+\end{align*}
+
+\section{Equilibrium}
+\begin{equation*}
+\sum\bvec{F} = \bvec{0}, \qquad \sum\bvec{\tau} = \bvec{0}
+\end{equation*}
+
+\begin{align*}
+Y &= \frac{(\text{stress})}{(\text{strain)}} = \frac{F_\perp / A}{\Delta L / L_0} \tag{Young's modulus} \\
+B &= \frac{(\text{stress})}{(\text{strain)}} = -\frac{\Delta p}{\Delta V/V0} =  -\frac{F_\perp / A}{\Delta L / L_0} \tag{Bulk modulus} \\
+S &= \frac{(\text{stress})}{(\text{strain)}} = \frac{F_{|| / A}}{x/h} \tag{Shear modulus}
+\end{align*}
+
+\section{Fluid Statics}
+\begin{align*}
+\rho &= m/V \tag{Density}\\
+P &= F/A \tag{Pressure}\\ 
+F_B &= m_\mathrm{fluid} g = \rho_\mathrm{fluid}gV \tag{Archimedes Principle}\\
+P_\mathrm{gauge} &= \rho g h \tag{Gauge pressure}\\
+P_\mathrm{abs} &= P_0 + P_\mathrm{gauge} \tag {Absolute Pressure}\\
+sg &= \rho / \rho_\mathrm{water} \tag{Specific gravity}
+\end{align*}
+
+\newpage
+
+\thispagestyle{fancy}
+\cfoot{\footnotesize Copyright \textcopyright \ 2020 Brian Schubert}
+\rfoot{\footnotesize Revised 2020-04-24}
+\lhead{PHYS 1151\\Physics for Engineering 1}
+\rhead{Spring 2020 \\ Prof. Matthew Webber}
+
+\section{Fluid dynamics}
+
+\begin{align*}
+\diffop[m]{t} &= \rho A v = \text{const.} \tag{Mass flow rate for ideal fluid}\\
+\diffop[V]{t} &= Av = \text{const.} \tag{Volume flow rate for ideal fluid}\\
+A_1 v_1 &= A_2 v_2 \tag{Continuity equation}\\
+P_1 + \rho g y_1 &+ \frac{1}{2}\rho v_1^2 = P_2 + \rho g y_2 + \frac{1}{2}\rho v_2^2 = \text{const.} \tag{Bernouilli's Equation $(W + PE + KE)/V$}\\
+\end{align*}
+
+\section{Periodic Motion}
+
+\begin{align*}
+f &= \frac{1}{T} \tag{Frequency and period} \\
+\omega &= 2\pi f = \frac{2\pi}{T} \tag{Angular frequency}\\
+F_x &= -kx \tag{Restoring force for ideal spring}\\
+a_x &= \diffop[^2 x]{t} = -\frac{k}{m}x \tag{Simple harmonic motion}\\
+\omega &= \sqrt{\frac{k}{m}} \tag{Angular frequency for simple harmonic motion}\\
+x &= A\cos(\omega t + \phi)\ \tag{Displacement in simple harmonic motion}\\
+E &= \frac{1}{2}mv_x^2 +\frac{1}{2}kx^2 = \frac{1}{2} kA^2 = \text{const.} \tag{Total mechaical energy in simple harmonic motion}\\
+\omega &= \sqrt{\frac{k}{m}} = \sqrt{\frac{mg/L}{m}} = \sqrt{\frac{g}{L}} \tag{Anuglar frequency of simple pendulum, small amplitude} \\
+\omega &= \sqrt{\frac{mgd}{I}} \tag{Angular freqency of physical pendulum, small amplitude}\\
+\end{align*}
+
+\vfill\null
+
+
+\columnbreak
+
+\sisetup{inter-unit-product =\cdot}
+\sisetup{per-mode = symbol}
+
+\section{Units}
+%\fbox{\parbox{\columnwidth}{
+        \begin{align*}
+        \si{\newton} &= \si{\kg\meter\per\second\squared} \tag{Newtons}\\
+        \si{\joule} &= \si{\kg\meter\squared\per\second\squared} \tag{Joules}\\
+        \si{\watt} &= \si{\kg\meter\squared\per\second\cubed} \tag{Watts}\\
+        \si{\pascal} &= \si{\kg\per\meter\per\second\squared} \tag{Pascals}
+        \end{align*}
+%}}
+    
+\section{Common Constants}
+\begin{align*}
+g &= \SI{9.81}{\meter\per\second\squared} \\
+\SI{1}{\atm} &= \SI{101325}{\pascal}\\
+\SI{1}{\atm} &= \SI{760}{\mmHg}
+\end{align*}
+\end{multicols*}
+\end{document}
